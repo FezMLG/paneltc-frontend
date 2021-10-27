@@ -1,8 +1,15 @@
-import React from 'react';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import allUserInputDataReducers from './states';
+import UserListbox from '../Components/UserListbox';
+import UserInput from "../Components/UserInput";
+
+import StageOne from "./Stages/StageOne";
+import StageTwo from "./Stages/StageTwo";
+import StageThree from "./Stages/StageThree";
+import StageFour from "./Stages/StageFour";
+import StageFive from "./Stages/StageFive";
 
 // eslint-disable-next-line
 const userInputDataStore = createStore(
@@ -12,7 +19,15 @@ const userInputDataStore = createStore(
 
 function excuseForm(){
   return (
-    <h1 className="text-white text-4xl">Thats our form</h1>
+    <div className="mx-auto">
+      <h1 className="text-white text-2xl">Administracja TrollCraft</h1>
+      <h2 className="text-white text-4xl">Usprawiedliwienia</h2>
+      <StageOne />
+      <StageTwo />
+      <StageThree />
+      <StageFour />
+      <StageFive />
+    </div>
   )
 };
 
