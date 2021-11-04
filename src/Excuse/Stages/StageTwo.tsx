@@ -6,7 +6,7 @@ const StageTwo = () => {
     <>
       <h3 className="text-white text-4xl">Uzupełnij dane</h3>
       <UserListbox label="Wybierz swój nick z listy:"/>
-      <UserInput label="Wybierz typ zwolnienia:" name="userEmail" placeholder="email@example.com"/>
+      <UserInput label="Wybierz typ zwolnienia:" name="userExcuse"/>
     </>
   );
 }

@@ -10,6 +10,7 @@ import StageTwo from "./Stages/StageTwo";
 import StageThree from "./Stages/StageThree";
 import StageFour from "./Stages/StageFour";
 import StageFive from "./Stages/StageFive";
+import { Provider } from 'react-redux';
 
 // eslint-disable-next-line
 const userInputDataStore = createStore(
@@ -22,11 +23,13 @@ function excuseForm(){
     <div className="mx-auto">
       <h1 className="text-white text-2xl">Administracja TrollCraft</h1>
       <h2 className="text-white text-4xl">Usprawiedliwienia</h2>
-      <StageOne />
-      <StageTwo />
-      <StageThree />
-      <StageFour />
-      <StageFive />
+      <Provider store={ userInputDataStore }>
+        <StageOne />
+        <StageTwo />
+        <StageThree />
+        <StageFour />
+        <StageFive />
+      </Provider>
     </div>
   )
 };

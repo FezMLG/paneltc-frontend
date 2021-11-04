@@ -26,12 +26,12 @@ const Home = () => {
           <span className="font-sans font-bold text-white">Zaloguj się</span>
         </button>
       </header>
-      <div className="h-36"></div>
+      <div className="h-28"></div>
       <section className="flex flex-row justify-around items-center">
         <h2 className="w-min text-6xl text-white font-bold">Trollcraft Administracja</h2>
         <img className="max-w-xl w-full" src="/welcome_cats.svg" alt=""></img>
       </section>
-      <div className="h-36"></div>
+      <div className="h-28"></div>
       <Options />
     </div>
   );

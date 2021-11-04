@@ -1,7 +1,17 @@
-const userExcuseReducer = (state = "", action: any) => {
+import { Action } from "../actions";
+
+export interface userExcuseState {
+  excuse: string[]
+}
+
+const initialState = {
+  excuse: []
+}
+
+const userExcuseReducer = (state:userExcuseState = initialState, action: Action) => {
   switch (action.type) {
-    case 'typeOfExcuse':
-      return 'typeOfExcuse' + state;
+    case 'ADD_EXCUSE':
+      return {...state, excuse: [...state.excuse, action.payload]};
     default:
       return state;
   }

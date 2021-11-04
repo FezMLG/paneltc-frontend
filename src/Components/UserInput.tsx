@@ -3,7 +3,9 @@ interface UserInput {
   type?: string,
   name?: string,
   id?: string,
-  placeholder?: string
+  placeholder?: string,
+  change?: any,
+  value?: any
 }
 
 const UserInput = (props: UserInput) => {
@@ -16,9 +18,11 @@ const UserInput = (props: UserInput) => {
         <input
           type={ props.type ?? 'text'}
           name={ props.name }
-          id={ props.id }
-          className="h-9 focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-4 pr-12 sm:text-sm border-gray-300 rounded-md"
-          placeholder={ props.placeholder ?? ''}
+          id={ props.id ?? props.name}
+          className="h-9 focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-4 pr-4 sm:text-sm border-gray-300 rounded-md"
+          placeholder={ props.placeholder }
+          onChange={ () => props.change }
+          value={ props.value }
         />
       </div>
     </div>
