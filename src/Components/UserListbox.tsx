@@ -1,15 +1,9 @@
-import { Fragment, useState } from 'react'
+import { ChangeEvent, Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { SelectorIcon } from '@heroicons/react/solid'
-
-const people = [
-  { name: 'Wade Cooper', rank: 'admin' },
-  { name: 'Arlene Mccoy', rank: 'admin' },
-  { name: 'Devon Webb', rank: 'moderator' },
-  { name: 'Tom Cook', rank: 'moderator' },
-  { name: 'Tanya Fox', rank: 'helper' },
-  { name: 'Hellen Schmidt', rank: 'helper' },
-]
+import { ListboxValue } from '../Excuse/actions'
+import { eventNames } from 'process'
+import { useDispatch, useSelector } from 'react-redux';
 
 // const ADMIN = {name: 'admin', color: 'bg-red-500'};
 // const MOD = {name: 'moderator', color: 'bg-purple-500'};
@@ -30,15 +24,50 @@ const AdminRanks = (rank: string) => {
   }
 }
 
+export class Dataset {
+  constructor(){
+    // this.data = data;
+  }
+  reasons(){
+    return {
+      one: 'one', 
+      two: 'two', 
+      three: 'three'
+    };
+  }
+
+  people(){
+    return [
+      { name: 'Wade Cooper', rank: 'admin' },
+      { name: 'Arlene Mccoy', rank: 'admin' },
+      { name: 'Devon Webb', rank: 'moderator' },
+      { name: 'Tom Cook', rank: 'moderator' },
+      { name: 'Tanya Fox', rank: 'helper' },
+      { name: 'Hellen Schmidt', rank: 'helper' },
+    ]
+  }
+}
+
+const dataset = new Dataset();
+const reasons = dataset.reasons();
+const people = dataset.people();
+
 function UserListbox(props: any) {
-  const [selected, setSelected] = useState(people[0])
+  const [selected, setSelected] = useState(people[0]);
+  const dispatch = useDispatch();
+
+  const handleSelect = (value: any) => {
+    setSelected(value);
+    dispatch(ListboxValue(selected));
+  }
+  
 
   return (
     <div className="w-72 mx-auto">
       <label className="block text-sm font-medium text-gray-500">
         { props.label }
       </label>
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox value={selected} onChange={handleSelect}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
             <span className="block truncate">{selected.name}</span>

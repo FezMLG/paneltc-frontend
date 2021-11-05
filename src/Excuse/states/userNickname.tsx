@@ -1,7 +1,7 @@
 const userNicknameReducer = (state = "", action: any) => {
   switch (action.type) {
-    case 'nickname':
-      return 'nickname' + state;
+    case 'ADD_NICKNAME':
+      return action.payload;
     default:
       return state;
   }

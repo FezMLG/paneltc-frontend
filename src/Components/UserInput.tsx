@@ -1,14 +1,16 @@
-interface UserInput {
+import { useState } from "react";
+
+interface UserInputProps {
   label?: string,
   type?: string,
   name?: string,
   id?: string,
   placeholder?: string,
-  change?: any,
+  onChange?: any,
   value?: any
 }
 
-const UserInput = (props: UserInput) => {
+const UserInput = (props: UserInputProps) => {
   return (
     <div className="w-72 mx-auto">
       <label htmlFor={ props.name } className="block text-sm font-medium text-gray-500">
@@ -21,8 +23,7 @@ const UserInput = (props: UserInput) => {
           id={ props.id ?? props.name}
           className="h-9 focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-4 pr-4 sm:text-sm border-gray-300 rounded-md"
           placeholder={ props.placeholder }
-          onChange={ () => props.change }
-          value={ props.value }
+          onChange={ props.onChange }
         />
       </div>
     </div>
